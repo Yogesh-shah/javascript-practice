@@ -1,0 +1,44 @@
+<input type="date" name="start_date" id="sdate" value="<?php if(!empty($start_date)) {echo $start_date;} ?>">&nbsp;&nbsp;
+<input type="date" name="end_date" id="edate" value="<?php if(!empty($end_date)) {echo $end_date;} ?>">
+
+<script>
+  jQuery("#sdate").change(function() {
+    // jQuery("#sdate").on("change",function(){
+    //getting selected current date
+    var current_selected_date = jQuery("#sdate").val();
+    // alert(current_selected_date);
+    // die();
+    //getting year, month, day of selected current date
+    var d = new Date(current_selected_date);
+      var year = d.getFullYear();
+      var month = d.getMonth();
+      var day = d.getDate();
+
+      //passed date of choosen from date in date object
+      var date2_value = new Date(year + 1, month + 1, day);
+
+      //from choosen current date adding 1 year to another datepicker set date(TO date)
+      var yearnew = date2_value.getFullYear();
+      var monthnew = date2_value.getMonth();
+      var daynew = date2_value.getDate();
+
+      //date
+      if(daynew < 10){
+        var daynewadded = "0" + daynew;	
+      }else{
+        var daynewadded = daynew;	
+      }
+
+      //month
+      if(monthnew < 10){
+        var monthnewadded = "0" + monthnew;	
+      }else{
+        var monthnewadded = monthnew;	
+      }
+
+      //assign 1 year plus date to new variable and set value of TO DATE.
+      var new_date = yearnew + "-" + monthnewadded + "-" + daynewadded;
+      jQuery("#edate").val(new_date);
+
+  });
+</script>	
