@@ -42,3 +42,10 @@
 
   });
 </script>	
+
+<?php
+  if($current_converted_date > $end_date)
+  {
+    echo 'You can not login, your VIP pack is expired';
+  }
+?>
